@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"> <!-- Center the entire LinearLayout if used within another parent -->
+
+    <!-- Button for selecting video -->
+    <Button
+        android:id="@+id/btnSelectVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Video for heart rate"/>
+
+    <!-- TextView for displaying heart rate -->
+    <TextView
+        android:id="@+id/tvHeartRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Heart Rate: "
+        android:layout_marginTop="16dp"/> <!-- Optional margin for spacing between button and text view -->
+
+    <!-- Button for reading CSV for respiratory rate -->
+    <Button
+        android:id="@+id/btnReadCSV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read CSV for Respiratory Rate"
+        android:layout_marginTop="16dp"/>
+
+    <!-- TextView for displaying respiratory rate -->
+    <TextView
+        android:id="@+id/tvRespiratoryRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respiratory Rate: "
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btnSymptoms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Symptoms"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>
