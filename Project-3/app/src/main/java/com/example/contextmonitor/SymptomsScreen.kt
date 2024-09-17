@@ -30,8 +30,8 @@ class SymptomsScreen : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         // Get heart rate and respiratory rate from Intent
-        val heartRate = intent.getIntExtra("HEART_RATE", 0)
-        val respiratoryRate = intent.getIntExtra("RESPIRATORY_RATE", 0)
+        val heartRate = intent.getIntExtra("heartrate", 0)
+        val respiratoryRate = intent.getIntExtra("respiratoryrate", 0)
 
         setContent {
             SymptomLoggingScreen(heartRate, respiratoryRate)

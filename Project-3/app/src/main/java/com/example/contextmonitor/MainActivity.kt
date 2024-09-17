@@ -128,8 +128,8 @@ class MainActivity : ComponentActivity() {
 
             val intent = Intent(this, SymptomsScreen::class.java)
             // Pass heart rate and respiratory rate to SymptomsScreen
-            intent.putExtra("HEART_RATE", heartRate)
-            intent.putExtra("RESPIRATORY_RATE", respiratoryRate)
+            intent.putExtra("heartrate", heartRate)
+            intent.putExtra("respiratoryrate", respiratoryRate)
             startActivity(intent)
         }
 
@@ -176,13 +176,23 @@ class MainActivity : ComponentActivity() {
 
     // Extract heart rate from TextView
     private fun extractHeartRate(textView: TextView): Int {
-        return textView.text.toString().substringAfter(":").trim().toIntOrNull() ?: 0
+        return textView.text.toString()
+            .substringAfter(":")
+            .substringBefore("BPM")
+            .trim()
+            .toIntOrNull() ?: 0
     }
 
     // Extract respiratory rate from TextView
     private fun extractRespiratoryRate(textView: TextView): Int {
-        return textView.text.toString().substringAfter(":").trim().toIntOrNull() ?: 0
+        // Extract the respiratory rate after the colon and before "breaths/min"
+        return textView.text.toString()
+            .substringAfter(":")
+            .substringBefore("breaths/min")
+            .trim()
+            .toIntOrNull() ?: 0
     }
+
 
     // Heart rate calculation from video
     @RequiresApi(Build.VERSION_CODES.P)
