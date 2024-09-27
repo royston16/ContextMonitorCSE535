@@ -29,7 +29,9 @@ system implementation AccelerometerRespiratoryRateSystem
     };
 end AccelerometerRespiratoryRateSystem;
 
-The following will be my UI elements so that the Health-Dev framework can provide appropriate bindings and controls to my Android application. I will declare a TextView with the ID tvHeartRate for displaying heart rate, and a Button with the ID btnSelectVideo to activate heart rate monitoring. For respiratory rate display, I will declare a TextView with ID tvRespiratoryRate for displaying respiratory rate and a Button with ID btnReadCSV to retrieve historical data or start respiratory rate monitoring. These will also be defined in my AADL specification to ensure that they are appropriately integrated into the application.
+The following will be my UI elements so that the Health-Dev framework can provide appropriate bindings and controls to my Android application. I will declare a TextView with the ID tvHeartRate for displaying heart rate, and a Button with the ID btnSelectVideo to activate heart rate monitoring. For respiratory rate display, I will declare a TextView with ID tvRespiratoryRate for displaying respiratory rate and a Button with ID btnReadCSV to retrieve historical data or start respiratory rate monitoring. 
+
+AADL specification: 
 
 system implementation HealthMonitoringApp_UI
   properties
