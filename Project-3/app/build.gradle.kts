@@ -71,7 +71,7 @@ dependencies {
 
     // Realm DB Dependency
 //    implementation("io.realm.kotlin:library-base:1.10.0")
-//    implementation("io.realm:realm-gradle-plugin:10.14.0") // Use the latest version of Realm
+//    implementation("io.realm:realm-gradle-plugin:10.14.0")
     implementation("io.realm:realm-android-library:10.12.0")
 
 // Additional dependencies

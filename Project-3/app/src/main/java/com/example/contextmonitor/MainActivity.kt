@@ -38,12 +38,10 @@ class MainActivity : ComponentActivity() {
     private lateinit var videoPicker: ActivityResultLauncher<Intent>
     private lateinit var csvPicker: ActivityResultLauncher<Intent>
 
-    // Lists to hold the accelerometer values from the three files
     private val accelValuesX = mutableListOf<Float>()
     private val accelValuesY = mutableListOf<Float>()
     private val accelValuesZ = mutableListOf<Float>()
 
-    // Variables to track which file is being selected
     private var fileSelectionStep = 0
 
 
@@ -53,7 +51,6 @@ class MainActivity : ComponentActivity() {
 
         Realm.init(this)
         setContentView(R.layout.activity_main)
-        // Set references to UI elements
 
         btnSelectVideo = findViewById(R.id.btnSelectVideo)
         tvHeartRate = findViewById(R.id.tvHeartRate)
@@ -81,21 +78,18 @@ class MainActivity : ComponentActivity() {
                     lifecycleScope.launch {
                         when (fileSelectionStep) {
                             0 -> {
-                                // Read CSV for X-axis values
                                 readCSV(it, contentResolver, accelValuesX)
                                 fileSelectionStep = 1
                                 promptForNextFile("Y")
                             }
                             1 -> {
-                                // Read CSV for Y-axis values
                                 readCSV(it, contentResolver, accelValuesY)
                                 fileSelectionStep = 2
                                 promptForNextFile("Z")
                             }
                             2 -> {
-                                // Read CSV for Z-axis values
                                 readCSV(it, contentResolver, accelValuesZ)
-                                fileSelectionStep = 0 // Reset for next operation
+                                fileSelectionStep = 0
                                 computeAndDisplayRespiratoryRate()
                             }
                         }
@@ -104,7 +98,6 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        // Button Listener for Video Picker
         btnSelectVideo.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
             videoPicker.launch(intent)
@@ -114,20 +107,18 @@ class MainActivity : ComponentActivity() {
                 Toast.LENGTH_LONG
             ).show()
         }
-        // Set click listener for CSV button to select CSV files for respiratory rate computation
         btnReadCSV.setOnClickListener {
             promptForNextFile("X")
         }
-        // Button to navigate to SymptomsScreen
         val symptomsButton = findViewById<Button>(R.id.btnSymptoms)
         symptomsButton.setOnClickListener {
-            // Heart rate and respiratory rate TextViews
+
             val heartRate = extractHeartRate(tvHeartRate)
             val respiratoryRate = extractRespiratoryRate(tvRespiratoryRate)
 
 
             val intent = Intent(this, SymptomsScreen::class.java)
-            // Pass heart rate and respiratory rate to SymptomsScreen
+
             intent.putExtra("heartrate", heartRate)
             intent.putExtra("respiratoryrate", respiratoryRate)
             startActivity(intent)
@@ -135,7 +126,6 @@ class MainActivity : ComponentActivity() {
 
     }
 
-    // Prompt to select the next CSV file for respiratory rate calculation
     private fun promptForNextFile(coordinate: String) {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "*/*"
@@ -167,14 +157,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    // Compute and display respiratory rate based on accelerometer data
     private fun computeAndDisplayRespiratoryRate() {
         val respiratoryRate = respiratoryRateCalculator(accelValuesX, accelValuesY, accelValuesZ)
         tvRespiratoryRate.text = "Respiratory Rate: $respiratoryRate breaths/min"
     }
 
 
-    // Extract heart rate from TextView
     private fun extractHeartRate(textView: TextView): Int {
         return textView.text.toString()
             .substringAfter(":")
@@ -183,9 +171,8 @@ class MainActivity : ComponentActivity() {
             .toIntOrNull() ?: 0
     }
 
-    // Extract respiratory rate from TextView
     private fun extractRespiratoryRate(textView: TextView): Int {
-        // Extract the respiratory rate after the colon and before "breaths/min"
+
         return textView.text.toString()
             .substringAfter(":")
             .substringBefore("breaths/min")

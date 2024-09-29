@@ -9,7 +9,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "symptoms.db"
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 4
         private const val TABLE_NAME = "symptoms"
         private const val ID = "id"
         private const val HEART_RATE = "heartRate"
@@ -18,7 +18,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val NAUSEA = "nausea"
         private const val HEADACHE = "headache"
         private const val DIARRHEA = "diarrhea"
-        private const val SOAR_THROAT = "soarThroat"
+        private const val SORE_THROAT = "soreThroat"
         private const val MUSCLE_ACHE = "muscleAche"
         private const val LOSS_OF_SMELL_OR_TASTE = "lossOfSmellOrTaste"
         private const val COUGH = "cough"
@@ -35,7 +35,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 "$NAUSEA INTEGER, " +
                 "$HEADACHE INTEGER, " +
                 "$DIARRHEA INTEGER, " +
-                "$SOAR_THROAT INTEGER, " +
+                "$SORE_THROAT INTEGER, " +
                 "$MUSCLE_ACHE INTEGER, " +
                 "$LOSS_OF_SMELL_OR_TASTE INTEGER, " +
                 "$COUGH INTEGER, " +
@@ -59,7 +59,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         contentValues.put(NAUSEA, ratings["Nausea"])
         contentValues.put(HEADACHE, ratings["Headache"])
         contentValues.put(DIARRHEA, ratings["Diarrhea"])
-        contentValues.put(SOAR_THROAT, ratings["Soar Throat"])
+        contentValues.put(SORE_THROAT, ratings["Soar Throat"])
         contentValues.put(MUSCLE_ACHE, ratings["Muscle Ache"])
         contentValues.put(LOSS_OF_SMELL_OR_TASTE, ratings["Loss of Smell or Taste"])
         contentValues.put(COUGH, ratings["Cough"])

@@ -42,7 +42,7 @@ class SymptomsScreen : ComponentActivity() {
 @Composable
 fun SymptomLoggingScreen(heartRate: Int, respiratoryRate: Int) {
     val symptoms = listOf(
-        "Fever", "Nausea", "Headache", "Diarrhea", "Soar Throat", "Muscle Ache",
+        "Fever", "Nausea", "Headache", "Diarrhea", "Sore Throat", "Muscle Ache",
         "Loss of Smell or Taste", "Cough", "Shortness of Breath", "Feeling Tired"
     )
 
