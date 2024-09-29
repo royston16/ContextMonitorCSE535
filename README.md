@@ -7,7 +7,8 @@ Q1. Imagine you are new to the programming world and not proficient enough in co
 Here is how I would outline my specifications. My system will use the CameraX API of the smartphone to make a rough estimation of the heart rate through frames captured from a video. It will also use the accelerometer or orientation sensor of the smartphone in order to make an estimate of the respiratory rate by body movements. Furthermore, this system should have a local database implemented by SQLLite for heart rate, respiration rate, and symptomatic user information.
 
 I would use a virtual sensor through the CameraX API for frame capture. The sampling frequency could be 30 frames per second, which would be enough for real-time heart rate detection. The algorithm provided as helper code can be used for extracting the heart rate from the variations in skin tone. This will be realized on the Android platform using the CameraX API. Communication protocols may not be required unless data has to be sent across to another device or server. 
-Sample AADL specification: 
+
+AADL specification: 
 system implementation CameraHeartRateSystem
   subcomponents
     CameraSensor: system CameraHeartRateSensor {
